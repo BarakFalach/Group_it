@@ -1,31 +1,59 @@
-import React from 'react';
-import './App.css';
-import {Person} from './PersonClass';
+import React, { Component } from "react";
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import logo from "./logo.svg";
+import "./App.css";
+import Form from "./Form";
+import DenseTable from "./Table.js";
 
-const barak = new Person(312470396 , 100);
+// injectTapEventPlugin();
 
-const a = barak.toString();
-console.log(a);
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <button>this is a person</button>
-<p>
-  {a}
-  </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
-      </header>
-    </div>
-  );
+
+  state = {
+    field:{}
+  }
+  onChange = updatedValue => 
+  {
+    this.setState({fields: {
+      ...this.state.fields, //read about "..." Syntax
+      ...updatedValue}});
+}
+
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div className="App">
+          <Form onChange={fields=>this.onChange(fields)}/>
+          <DenseTable 
+          data={[]}
+          header = {[
+            {
+              name:"ID",
+              prop:'ID'
+            },
+            {
+              name:"First Name",
+              prop:'firstName'
+            },
+            {
+              name:"Last Name",
+              prop:'lastName'
+            },
+            {
+              name:"1st friend",
+              prop:'friend1'
+            },
+            {
+              name:"2nd friend",
+              prop:'friend2'
+            },
+            ]}/>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
 }
 
 export default App;

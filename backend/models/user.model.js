@@ -12,6 +12,10 @@ const userSchema = new Schema({
     trim: true,
     minlength: 3
   },
+  //email
+  //password
+  //array of objects,each object contains{username_id,friendship_level,strength}
+  //array of belonged groups(name,id) 
 }, {
   timestamps: true, // automatcliy create a field of when the user created
 });

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+// loads environment variables from a .env file into process.env
 require('dotenv').config();
 
 const app=express();
@@ -22,7 +23,6 @@ const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 app.use('/exercises',exercisesRouter);
 app.use('/users',usersRouter);
-
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
